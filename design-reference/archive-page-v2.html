@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;family=DM+Serif+Display&amp;family=JetBrains+Mono:wght@300;400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        'golden-orange': '#D48C45',
+                        'icy-blue': '#B2D0E6',
+                        'deep-void': '#0A0C10',
+                        'mist-white': '#F0F4F8',
+                    },
+                    fontFamily: {
+                        serif: ['DM Serif Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '3xl': '24px',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite',
+                        'float': 'float 10s ease-in-out infinite',
+                        'breath': 'breath 12s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        breath: {
+                            '0%, 100%': { opacity: '0.2', transform: 'scale(1)' },
+                            '50%': { opacity: '0.5', transform: 'scale(1.05)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style data-purpose="custom-theme-styles">
+    .mist-overlay {
+      background: linear-gradient(0deg, rgba(10,12,16,0) 0%, rgba(178,208,230,0.1) 50%, rgba(10,12,16,0) 100%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .scroll-snap-start {
+      scroll-snap-align: start;
+    }
+    .scroll-snap-always {
+      scroll-snap-stop: always;
+    }
+    body {
+        scroll-snap-type: y mandatory;
+    }
+  </style>
+</head>
+<body class="bg-deep-void text-mist-white selection:bg-golden-orange selection:text-deep-void overflow-x-hidden font-sans">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center bg-deep-void/80 backdrop-blur-md" data-purpose="site-navigation">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 bg-golden-orange rounded-full flex items-center justify-center">
+<span class="text-deep-void font-bold text-xs">DM</span>
+</div>
+<span class="font-mono text-xs tracking-widest uppercase">DailyMonke / Archive</span>
+</div>
+<div class="flex space-x-12 font-mono text-xs tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">
+<a class="hover:text-golden-orange flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+Current Feature
+</a>
+</div>
+</nav>
+<main class="flex-1 px-6 py-12 md:px-12 lg:px-20">
+<section class="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-6 pt-32 scroll-snap-start scroll-snap-always" id="intro">
+<div class="absolute inset-0 mist-overlay z-0 animate-pulse-slow"></div>
+<div class="relative z-10 max-w-4xl">
+<p class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-60 mb-12">Zoological Field Catalog // Database</p>
+<h1 class="font-serif text-7xl md:text-9xl mb-8 italic text-golden-orange">The Archive</h1>
+<p class="font-mono text-sm tracking-widest uppercase opacity-80 mb-20 max-w-2xl mx-auto">A systematized repository of diurnal and nocturnal primate observations.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left mt-12 border-t border-white/5 pt-12">
+<div class="border-l border-golden-orange/30 pl-6">
+<p class="font-mono text-[10px] tracking-widest uppercase opacity-40 mb-1">Repository ID</p>
+<p class="font-mono text-xs text-icy-blue">[REF_ARC_042]</p>
+</div>
+<div class="border-l border-icy-blue/30 pl-6">
+<p class="font-mono text-[10px] tracking-widest uppercase opacity-40 mb-1">Classification</p>
+<p class="font-mono text-xs text-icy-blue">CATALOGUED</p>
+</div>
+<div class="border-l border-golden-orange/30 pl-6">
+<p class="font-mono text-[10px] tracking-widest uppercase opacity-40 mb-1">Last Synced</p>
+<p class="font-mono text-xs text-icy-blue">2024.05.24</p>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 gap-12 md:grid-cols-4 lg:grid-cols-12 auto-rows-min max-w-7xl mx-auto px-6 py-20 scroll-snap-start">
+<div class="glass-card rounded-3xl group relative flex flex-col md:col-span-4 lg:col-span-8 overflow-hidden">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img alt="Golden Snub-nosed Monkey" class="h-full w-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfQ06LUUOGkD7Hmqg_PeGGW2vafxUjo7BsmPL2TmPIUfISrxyfmcfWL35nZQLtoA8Bd00767Um8hQQRu9n0m8_Py5yNwYdwHQDpW0IYfkBfM0RiFPbugC-_mxCaUacctYTpMOMjjZQ6XQM_81yjHoZN2xTZV9QXE95mN_XBDHgKIbamkZebHFG1vCEr5RCJMnfUoTnNTvoodDGzSQdh1wcZYkJFXKqxmo49DRr1y3nIlfkJEqeGUjKNPqLC70srAPV6almN5ACgHQ"/>
+<div class="absolute top-6 left-6 flex gap-3">
+<span class="bg-deep-void/60 backdrop-blur-md px-3 py-1.5 text-[8px] font-mono uppercase tracking-[0.2em] text-golden-orange border border-golden-orange/20 rounded-full">Specimen A-882</span>
+</div>
+</div>
+<div class="p-10 flex flex-col">
+<h3 class="font-serif text-5xl text-mist-white mb-2 italic">Golden Snub-nose</h3>
+<p class="font-mono text-[10px] text-icy-blue/60 uppercase tracking-[0.3em]">Rhinopithecus roxellana</p>
+<div class="mt-12 flex items-center justify-between border-t border-white/5 pt-6">
+<span class="font-mono text-[9px] uppercase tracking-[0.2em] opacity-40">Observation // 001</span>
+<span class="font-mono text-xs text-golden-orange">01.12.23</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-3xl group relative flex flex-col md:col-span-2 lg:col-span-4 overflow-hidden">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Mandrill" class="h-full w-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbgy7B1yK_x_XRQ8HgkJeUemhsDoZRiNfG-APcGZUnBTO5n8N1XR1O9KOCZhiuLR26lC3NPCB3zwolbmDFAxGcoaVVnOJL1bOEai6Qgsf0tU3wti6GSE5_sykI-tmS--D2ZTXtWGQ9mujY7FluCzKujyuPQys5aSLbnwCOEGtLKMJ9uopS-GZQyg01oDS7QiXjJv9lPUddsPQYj50qH24Q_KTsM53pA9IfNv9IS3yBcs8s2smEn-tPq3rAAJBv06G96nX6oUv4Ztk"/>
+</div>
+<div class="p-8">
+<h3 class="font-serif text-3xl text-mist-white mb-1">Mandrill</h3>
+<p class="font-mono text-[9px] text-icy-blue/40 uppercase tracking-widest">Mandrillus sphinx</p>
+<div class="mt-12 text-right">
+<span class="font-mono text-[10px] text-golden-orange/80">02.12.23</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-3xl group relative flex flex-col md:col-span-2 lg:col-span-4 overflow-hidden">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Spectral Tarsier" class="h-full w-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0AyZSM8sLcR5B7L9L-E16a8cAgcUDyqGE27sFIb5x3i_yBJ0i8LBEKZmArTQxn74O-WT79prY5TLpkzyiW6dHyBjqAo2QlUZB-MymW07qwCYF3OO8lz0MvhN_xyUBukbdZcXIljOOzf73Y2jiEI3vi6iy_fSZ-PgHx4FXWAc1oa7KYs6vPmbCGZZlvWVqLrYB5NXp_iicGJVCaQKkgnTEKaIO7GMWbgHwtmrUdSYDtPH0HIpJHVi9clGnSUJZhjiL7eBqaIpGX70"/>
+</div>
+<div class="p-8">
+<h3 class="font-serif text-3xl text-mist-white mb-1">Spectral Tarsier</h3>
+<p class="font-mono text-[9px] text-icy-blue/40 uppercase tracking-widest">Tarsius spectrum</p>
+<div class="mt-12 text-right">
+<span class="font-mono text-[10px] text-golden-orange/80">03.12.23</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-3xl group relative flex flex-col md:col-span-2 lg:col-span-4 overflow-hidden">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Emperor Tamarin" class="h-full w-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZhKTNt953QUSyN3Tt-eNPXoBDvNRxxMXneEE4U02L4HPYzJLS8OSf4ov7aSekTbLR721TCp6-HeBBioZBkaKMpQzA2tYVd9lWf9_EnJLqTR0YozIXn3Faeuey_Mu-mtHj8tK9_q5DK81twpIRpOQEwUWsIFtxbKhM_zzTx-wPAUOgop661WdCGrL0MqiKbeU3TrgJUdOkAsgASqYNlGm7u8V24YRwtxk_TLrCAV_R526zbyZLuLSKpWf5OJ-gd1pcekmjpcnjbVU"/>
+</div>
+<div class="p-8">
+<h3 class="font-serif text-3xl text-mist-white mb-1">Emperor Tamarin</h3>
+<p class="font-mono text-[9px] text-icy-blue/40 uppercase tracking-widest">Saguinus imperator</p>
+<div class="mt-12 text-right">
+<span class="font-mono text-[10px] text-golden-orange/80">04.12.23</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-3xl group relative flex flex-col md:col-span-2 lg:col-span-4 overflow-hidden">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Bald Uakari" class="h-full w-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR5Ccx1vpnFL4tHZHUp65yO8HMKMrqb252oB0W_RktxV2BBAuAjuKkpzg_zrsci_AuAfKqNP-CyR5ACrMVZw5i6SfvMUQeoRmjjOQpG6MDIo2D8nztjTdDu9VSHaUdsN0FRNKrU184QUvDDEUFhaYgGUaNK9Ow4n8ZeQ9sfSo_pRHmq8yw229cYKk3DhDQAUZ7vpKZqspHltGwKBkY3AyNfpF9C2SqtO13LD7dfamVzSuj_cGDfj2ZXz2UrP5gjNcSQAbq7rwBKZ0"/>
+</div>
+<div class="p-8">
+<h3 class="font-serif text-3xl text-mist-white mb-1">Bald Uakari</h3>
+<p class="font-mono text-[9px] text-icy-blue/40 uppercase tracking-widest">Cacajao calvus</p>
+<div class="mt-12 text-right">
+<span class="font-mono text-[10px] text-golden-orange/80">30.11.23</span>
+</div>
+</div>
+</div>
+</div>
+<div class="py-32 flex flex-col items-center justify-center scroll-snap-start scroll-snap-always">
+<div class="w-px h-24 bg-gradient-to-b from-transparent via-golden-orange/40 to-transparent mb-12"></div>
+<button class="relative z-10 w-48 h-48 rounded-full flex items-center justify-center glass-card hover:bg-white/5 transition-colors group">
+<div class="text-center">
+<span class="material-symbols-outlined text-golden-orange text-3xl mb-2 group-hover:scale-110 transition-transform">history</span>
+<span class="block font-mono text-[8px] tracking-[0.3em] text-icy-blue uppercase px-4">Retrieve Historical Data</span>
+</div>
+<svg class="absolute inset-0 w-full h-full p-4 pointer-events-none" viewbox="0 0 100 100">
+<circle class="text-golden-orange/30 animate-[spin_20s_linear_infinite]" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="5 2" stroke-width="0.5"></circle>
+</svg>
+</button>
+<p class="mt-12 font-mono text-[10px] tracking-[0.4em] uppercase opacity-40">End of Catalog Sequence</p>
+</div>
+</main>
+<footer class="p-24 border-t border-white/5 bg-deep-void text-center scroll-snap-start scroll-snap-always" data-purpose="site-footer">
+<div class="flex flex-col items-center space-y-8">
+<div class="font-serif text-4xl italic text-golden-orange">DailyMonke</div>
+<div class="w-24 h-px bg-gradient-to-r from-transparent via-icy-blue/40 to-transparent"></div>
+<p class="font-mono text-[10px] tracking-[0.4em] uppercase opacity-40">Phylogenetic Index / Conservation Status / Data Protocol / Ethics</p>
+<div class="text-[10px] font-mono opacity-20 pt-12 uppercase tracking-widest">© 2024 DAILYMONKE ARCHIVE. ALL RIGHTS RESERVED.</div>
+</div>
+</footer>
+</div>
+</body></html>
