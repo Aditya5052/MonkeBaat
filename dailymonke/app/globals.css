@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-deep-void: #000000;
+  --color-deep-void-elevated: #111111;
+  --color-golden-orange: #D48C45;
+  --color-icy-blue: #B2D0E6;
+  --color-mist-white: #F0F4F8;
+
+  --font-serif: var(--font-dm-serif-display);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-inter);
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-3xl: 32px;
+
+  --ease-snappy: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-pulse-slow: pulse-slow 6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  --animate-breath: breath 12s ease-in-out infinite;
+  --animate-aurora: aurora 60s linear infinite;
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
+  --animate-shake: shake 0.35s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  15% { transform: rotate(6deg) translateY(-2px); }
+  35% { transform: rotate(-5deg) translateY(0); }
+  55% { transform: rotate(4deg) translateY(-2px); }
+  75% { transform: rotate(-3deg) translateY(0); }
+  90% { transform: rotate(2deg) translateY(-1px); }
+}
+
+@keyframes drawIn {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes charReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes breath {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--color-deep-void);
+  color: var(--color-mist-white);
+}
+
+::selection {
+  background-color: var(--color-golden-orange);
+  color: var(--color-deep-void);
+}
+
+/* Custom Accessibility Focus Ring */
+*:focus-visible {
+  outline: 2px solid var(--color-golden-orange);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.glass-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 40px rgba(212, 140, 69, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent 50%),
+    url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E');
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.mist-overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(10, 12, 16, 0) 0%,
+    rgba(178, 208, 230, 0.1) 50%,
+    rgba(10, 12, 16, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.sketch-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawIn 8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.char-reveal span {
+  display: inline-block;
+  opacity: 0;
+  animation: charReveal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.no-wrap-heading {
+  white-space: normal;
+}
+
+@media (min-width: 1024px) {
+  .no-wrap-heading {
+    white-space: nowrap;
+  }
+}
+
+@media (pointer: fine) {
+  html,
+  html *,
+  html *::before,
+  html *::after {
+    cursor: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
